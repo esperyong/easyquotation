@@ -29,6 +29,13 @@ class Tencent(basequotation.BaseQuotation):
                 if prefix
                 else stock[2]
             )
+            
+            fdatetime = ''
+            try:
+                fdatetime = datetime.strptime(stock[30], "%Y%m%d%H%M%S")
+            except Exception as e:
+                fdatetime = datetime.strptime(stock[30], "%Y/%m/%d %H:%M:%S")
+                
             stock_dict[stock_code] = {
                 "name": stock[1],
                 "code": stock_code,
@@ -59,13 +66,13 @@ class Tencent(basequotation.BaseQuotation):
                 "ask5": float(stock[27]),
                 "ask5_volume": int(stock[28]) * 100,
                 "最近逐笔成交": stock[29],
-                "datetime": datetime.strptime(stock[30], "%Y%m%d%H%M%S"),
+                "datetime": fdatetime,
                 "涨跌": float(stock[31]),
                 "涨跌(%)": float(stock[32]),
                 "high": float(stock[33]),
                 "low": float(stock[34]),
                 "价格/成交量(手)/成交额": stock[35],
-                "成交量(手)": int(stock[36]) * 100,
+                "成交量(手)": float(stock[36]) * 100,
                 "成交额(万)": float(stock[37]) * 10000,
                 "turnover": self._safe_float(stock[38]),
                 "PE": self._safe_float(stock[39]),
@@ -75,7 +82,7 @@ class Tencent(basequotation.BaseQuotation):
                 "振幅": float(stock[43]),
                 "流通市值": self._safe_float(stock[44]),
                 "总市值": self._safe_float(stock[45]),
-                "PB": float(stock[46]),
+                "PB": str(stock[46]),
                 "涨停价": float(stock[47]),
                 "跌停价": float(stock[48]),
                 "量比": self._safe_float(stock[49]),

@@ -29,6 +29,7 @@ class BaseQuotation(metaclass=abc.ABCMeta):
 
     def gen_stock_list(self, stock_codes):
         stock_with_exchange_list = self._gen_stock_prefix(stock_codes)
+        #print('==>',stock_with_exchange_list)
 
         if self.max_num > len(stock_with_exchange_list):
             request_list = ",".join(stock_with_exchange_list)

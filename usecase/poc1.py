@@ -7,14 +7,16 @@ def getdata(stock_code):
 
     q2 = easyquotation.use('tencent') 
 
-    q3 = easyquotation.use('jsl') 
+    q3 = easyquotation.use('hkquote') 
 
     # 支持直接指定前缀，如 'sh000001'
     r1 = q1.real(stock_code) 
     r2 = q2.real(stock_code) 
+    r3 = q3.real(stock_code) 
 
     print( 'sina ==>', r1 )
     print( 'tencent ==>', r2 )
+    print( 'hkquote ==>', r3 )
 
 
     #r3 = q3.etfindex(index_id="513050", 
