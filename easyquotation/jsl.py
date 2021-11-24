@@ -349,7 +349,7 @@ class Jsl:
             data = {
                 fund_id: cell
                 for fund_id, cell in data.items()
-                if cell["index_id"] == index_id
+                if cell["fund_id"] == index_id
             }
         if min_volume:
             # 过滤小于指定交易量的数据
