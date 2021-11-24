@@ -14,9 +14,12 @@ def getdata(stock_code):
     r2 = q2.real(stock_code) 
     r3 = q3.real(stock_code) 
 
-    print( 'sina ==>', r1 )
-    print( 'tencent ==>', r2 )
-    print( 'hkquote ==>', r3 )
+    #print( 'sina ==>', r1 )
+    #print( 'tencent ==>', r2 )
+
+    print( 'tencent ==>', q2.stocks(['01951', '000858']) )
+  
+    #print( 'hkquote ==>', r3 )
 
 
     #r3 = q3.etfindex(index_id="513050", 
